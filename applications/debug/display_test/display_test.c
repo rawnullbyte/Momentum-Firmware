@@ -78,17 +78,8 @@ static uint32_t display_test_exit_callback(void* context) {
 }
 
 static void display_test_reload_config(DisplayTest* instance) {
-    FURI_LOG_I(
-        TAG,
-        "contrast: %d, regulation_ratio: %d, bias: %d",
-        instance->config_contrast,
-        instance->config_regulation_ratio,
-        instance->config_bias);
-    u8x8_d_st756x_init(
-        &instance->gui->canvas->fb.u8x8,
-        instance->config_contrast,
-        instance->config_regulation_ratio,
-        instance->config_bias);
+    FURI_LOG_I(TAG, "contrast: %d", instance->config_contrast);
+    u8x8_SetContrast(&instance->gui->canvas->fb.u8x8, instance->config_contrast);
 }
 
 static void display_config_set_bias(VariableItem* item) {

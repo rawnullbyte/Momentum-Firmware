@@ -176,6 +176,104 @@ There are 4 methods to install Momentum, we recommend you use the **Web Updater*
 
 <br>
 
+<h2 align="center">Hardware Pinouts</h2>
+
+This section provides comprehensive pinout information for the Flipper Zero hardware. Both F7 and F18 targets use similar pin assignments with some variations in external GPIO availability.
+
+### Display (SSD1306 128x64 SPI)
+The display uses SPI bus D with 4MHz clock speed (SPI mode 0 - CPOL=0, CPHA=0).
+
+| Signal | Pin | Port | Pin Number | Description |
+|--------|-----|------|------------|-------------|
+| MOSI   | PB15 | GPIOB | 15 | SPI Data Out |
+| MISO   | PC2  | GPIOC | 2  | SPI Data In (not used for display) |
+| SCK    | PD1  | GPIOD | 1  | SPI Clock |
+| CS     | PC11 | GPIOC | 11 | Chip Select |
+| DC/DI  | PB1  | GPIOB | 1  | Data/Command Select |
+| RST    | PB0  | GPIOB | 0  | Reset |
+
+### Buttons
+| Button | Pin | Port | Pin Number |
+|--------|-----|------|------------|
+| Up     | PB10 | GPIOB | 10 |
+| Down   | PC6  | GPIOC | 6  |
+| Right  | PB12 | GPIOB | 12 |
+| Left   | PB11 | GPIOB | 11 |
+| OK     | PH3  | GPIOH | 3  |
+| Back   | PC13 | GPIOC | 13 |
+
+### SPI Buses
+**SPI_D (Display/SD Card):**
+- MOSI: PB15
+- MISO: PC2
+- SCK: PD1
+
+**SPI_R (RFID/NFC):**
+- MOSI: PB5
+- MISO: PB4
+- SCK: PA5
+
+### I2C Bus (Power Management)
+- SDA: PA10
+- SCL: PA9
+
+### UART (Debug/External)
+- TX: PB6
+- RX: PB7
+
+### USB
+- DM: PA11 (USB Data Minus)
+- DP: PA12 (USB Data Plus)
+
+### SD Card
+- CS: PC12 (Chip Select)
+- CD: PC10 (Card Detect)
+
+### External Modules
+**CC1101 (Sub-GHz):**
+- CS: PD0 (Chip Select)
+- G0: PA1 (GPIO0/Interrupt)
+
+**NFC/RFID:**
+- CS: PE4 (Chip Select)
+
+**Infrared:**
+- RX: PA0 (Infrared Receive)
+- TX: PB9 (Infrared Transmit)
+
+### Vibration Motor
+- VIBRO: PA8
+
+### External GPIO Pins (F7 Target)
+| Pin Name | Port | Pin | Typical Use |
+|----------|------|-----|-------------|
+| gpio_ext_pc0 | GPIOC | 0 | GPIO Ext 1 |
+| gpio_ext_pc1 | GPIOC | 1 | GPIO Ext 2 |
+| gpio_ext_pc3 | GPIOC | 3 | GPIO Ext 3 |
+| gpio_ext_pb2 | GPIOB | 2 | GPIO Ext 4 |
+| gpio_ext_pb3 | GPIOB | 3 | GPIO Ext 5 |
+| gpio_ext_pa4 | GPIOA | 4 | GPIO Ext 6 |
+| gpio_ext_pa6 | GPIOA | 6 | GPIO Ext 7 |
+| gpio_ext_pa7 | GPIOA | 7 | GPIO Ext 8 |
+
+### External GPIO Pins (F18 Target - Additional)
+The F18 target has additional external GPIO pins:
+- PC4, PC5, PA0, PA1, PA2, PA5, PA15, PB4, PB5, PB9, PB13, PD0, PE4
+
+### Crystal Oscillator
+- 32MHz IN: PC14
+- 32MHz OUT: PC15
+
+### Notes:
+1. **SPI Mode**: All SPI buses use mode 0 (CPOL=0, CPHA=0) - clock idle low, data sampled on rising edge.
+2. **Display**: Uses SSD1306 128x64 OLED display with SPI interface.
+3. **External GPIO**: Can be configured for various modules (GPIO, PWM, ADC, etc.) through Momentum Settings.
+4. **Pin Naming**: Pins are named as `P{Port}{PinNumber}` (e.g., PB15 = Port B, Pin 15).
+
+For detailed configuration of external module GPIO assignments, use the **Momentum Settings > Protocols** menu on your Flipper Zero.
+
+<br>
+
 <h2 align="center">Build it yourself</h2>
 
 ```bash

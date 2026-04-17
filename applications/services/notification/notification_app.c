@@ -59,7 +59,7 @@ static void
 
 static void notification_apply_lcd_contrast(NotificationApp* app) {
     Gui* gui = furi_record_open(RECORD_GUI);
-    u8x8_d_st756x_set_contrast(&gui->canvas->fb.u8x8, app->settings.contrast);
+    u8x8_SetContrast(&gui->canvas->fb.u8x8, app->settings.contrast);
     furi_record_close(RECORD_GUI);
 }
 
