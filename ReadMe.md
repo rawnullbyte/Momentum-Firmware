@@ -287,6 +287,9 @@ $ ./fbt flash_usb_full
 To compile a TGZ package
 $ ./fbt updater_package
 
+To compile firmware
+$ ./fbt COMPACT=1 DEBUG=0
+
 To build and launch a single app:
 $ ./fbt launch APPSRC=your_appid
 ```
